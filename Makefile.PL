@@ -23,21 +23,21 @@ $notify->set_inc( $pkg_config{cflags}.' -Ibuild -Wall' );
 $notify->set_libs( $pkg_config{libs} );
 $notify->install( File::Spec->catfile(qw( build notify-autogen.h )) );
 $notify->add_pm(
-    'pm/Notify.pm' => '$(INST_LIBDIR)/Notify.pm',
+    'lib/Notify.pm' => '$(INST_LIBDIR)/Notify.pm',
 );
 
 WriteMakefile(
     NAME                => 'Gtk2::Notify',
     AUTHOR              => 'Florian Ragwitz <rafl@debian.org>',
-    VERSION_FROM        => 'pm/Notify.pm',
-    ABSTRACT_FROM       => 'pm/Notify.pm',
+    VERSION_FROM        => 'lib/Notify.pm',
+    ABSTRACT_FROM       => 'lib/Notify.pm',
     PL_FILES            => {},
     PREREQ_PM => {
         'Test::More' => '0',
         'Glib'       => '1.093',
     },
     MAN3PODS => {
-        'pm/Notify.pm' => '$(INST_MAN3DIR)/Gtk2::Notify.$(MAN3EXT)',
+        'lib/Notify.pm' => '$(INST_MAN3DIR)/Gtk2::Notify.$(MAN3EXT)',
         Glib::MakeHelper->do_pod_files(@xs_files),
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
