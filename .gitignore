@@ -2,6 +2,7 @@ MANIFEST
 MANIFEST.bak
 Makefile
 Makefile.old
+META.yml
 blib
 build
 Gtk2-Notify-*
