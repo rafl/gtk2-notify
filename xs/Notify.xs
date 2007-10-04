@@ -88,15 +88,15 @@ notify_get_server_info(class)
 MODULE = Gtk2::Notify	PACKAGE = Gtk2::Notify	PREFIX = notify_notification_
 
 NotifyNotification*
-notify_notification_new(class, summary, message, icon, attach)
+notify_notification_new(class, summary, message=NULL, icon=NULL, attach=NULL)
 		const gchar* summary
 		const gchar* message
 		const gchar* icon
-		GtkWidget* attach
+		GtkWidget_ornull* attach
 	C_ARGS: summary, message, icon, attach
 
 gboolean
-notify_notification_update(notification, summary, message, icon)
+notify_notification_update(notification, summary, message=NULL, icon=NULL)
 		NotifyNotification* notification
 		const gchar* summary
 		const gchar* message
@@ -136,6 +136,10 @@ notify_notification_set_icon_from_pixbuf(notification, icon)
 		NotifyNotification* notification
 		GdkPixbuf* icon
 
+=for TODO
+A generic set_hint()
+=cut
+
 void
 notify_notification_set_hint_int32(notification, key, value)
 		NotifyNotification* notification
@@ -172,7 +176,7 @@ notify_notification_clear_hints(notification)
 		NotifyNotification* notification
 
 void
-notify_notification_add_action(notification, action, label, callback, userdata)
+notify_notification_add_action(notification, action, label, callback, userdata=NULL)
 		NotifyNotification* notification
 		const char* action
 		const char* label

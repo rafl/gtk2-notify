@@ -6,7 +6,7 @@ use Gtk2;
 require DynaLoader;
 
 our @ISA = qw( DynaLoader );
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 sub import {
     my $class = shift;
@@ -20,6 +20,7 @@ sub import {
                 Carp::croak('-init requires the application name to use as its first argument');
             }
 
+            Gtk2->init;
             Gtk2::Notify->init($app_name);
         } else {
             $class->VERSION($arg);
@@ -40,7 +41,7 @@ Gtk2::Notify - Perl interface to libnotify
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 
 =head1 SYNOPSIS

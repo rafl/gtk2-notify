@@ -1,5 +1,15 @@
 Changes
-examples/simple.pl
+examples/applet-critical.png
+examples/basic.pl
+examples/default-action.pl
+examples/image.pl
+examples/markup.pl
+examples/multi-actions.pl
+examples/replace-widget.pl
+examples/replace.pl
+examples/server-info.pl
+examples/urgency.pl
+examples/xy.pl
 Makefile.PL
 MANIFEST			This list of files
 MANIFEST.SKIP
