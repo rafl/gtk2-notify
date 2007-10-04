@@ -1,5 +1,12 @@
 Revision history for Gtk2-Notify
 
+0.04    Thu, 04 Oct 2007 14:26:02 +0200
+        * Let set_hint() stringify it's argument when it doesn't know
+          what to do with it.
+        * Don't compile things with -Werror.
+        * Be more portable by using ppport.h.
+        * Several minor, not user-visible improvements.
+
 0.03    Thu, 31 May 2007 13:48:03 +0200
         * Bind status icon functions.
         * Various improvements.
