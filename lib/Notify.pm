@@ -6,7 +6,7 @@ use Gtk2;
 require DynaLoader;
 
 our @ISA = qw( DynaLoader );
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 sub import {
     my $class = shift;
@@ -41,7 +41,7 @@ Gtk2::Notify - Perl interface to libnotify
 
 =head1 VERSION
 
-Version 0.02
+Version 0.04
 
 =head1 SYNOPSIS
 
