@@ -43,7 +43,6 @@ Gtk2::Notify - Perl interface to libnotify
 
 Version 0.02
 
-
 =head1 SYNOPSIS
 
     use Gtk2::Notify -init, "app_name";
@@ -59,7 +58,9 @@ Version 0.02
 
 =item -init
 
-Importing Gtk2::Notify with the -init option requires one additional argument: the application name to use. This is equivalent to Gtk2::Notify->init($app_name).
+Importing Gtk2::Notify with the -init option requires one additional argument:
+the application name to use. This is equivalent to
+Gtk2::Notify->init($app_name).
 
 =back
 
