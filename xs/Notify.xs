@@ -74,27 +74,14 @@ notify_get_server_caps (class)
 		}
 		g_list_free (list);
 
-void
-notify_get_server_info (class)
-	PREINIT:
-		gboolean success;
-		char *name;
-		char *vendor;
-		char *version;
-		char *spec_version;
-	PPCODE:
-		success = notify_get_server_info (&name, &vendor, &version,
-		                                  &spec_version);
-
-		if (!success) {
+NO_OUTPUT gboolean
+notify_get_server_info (class, OUTLIST char *name, OUTLIST char *vendor, OUTLIST char *version, OUTLIST char *spec_version)
+	C_ARGS:
+		&name, &vendor, &version, &spec_version
+	POSTCALL:
+		if (!RETVAL) {
 			XSRETURN_EMPTY;
 		}
-
-		EXTEND (sp, 4);
-		mPUSHp (name, strlen (name));
-		mPUSHp (vendor, strlen (vendor));
-		mPUSHp (version, strlen (version));
-		mPUSHp (spec_version, strlen (spec_version));
 
 MODULE = Gtk2::Notify	PACKAGE = Gtk2::Notify	PREFIX = notify_notification_
 
