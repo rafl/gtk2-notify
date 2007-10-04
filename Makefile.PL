@@ -19,7 +19,7 @@ our @xs_files = <xs/*.xs>;
 
 $notify->add_xs( @xs_files );
 $notify->add_typemaps( File::Spec->rel2abs( File::Spec->catfile(qw( build notify.typemap )) ) );
-$notify->set_inc( $pkg_config{cflags}.' -Ibuild -Wall -Werror' );
+$notify->set_inc( $pkg_config{cflags}.' -Ibuild -Wall' );
 $notify->set_libs( $pkg_config{libs} );
 $notify->install( File::Spec->catfile(qw( build notify-autogen.h )) );
 $notify->add_pm(
