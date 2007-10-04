@@ -1,4 +1,5 @@
 ^build/
+^Gtk2-Notify-
 ^\..*
 \.o$
 \.c$
