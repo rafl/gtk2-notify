@@ -218,8 +218,12 @@ void
 notify_notification_set_hint_byte_array (notification, key, value)
 		NotifyNotification *notification
 		const gchar *key
-		const guchar *value
-	C_ARGS: notification, key, value, sv_len (ST (3))
+	PREINIT:
+		STRLEN len = 0;
+	INPUT:
+		const guchar *value = ($type)SvPVbyte ($arg, len);
+	C_ARGS:
+		notification, key, value, len
 
 void
 notify_notification_clear_hints (notification)
