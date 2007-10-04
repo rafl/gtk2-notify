@@ -184,7 +184,7 @@ set_hint (notification, key, value)
 			                                     (gchar *)SvPV_nolen (value));
 		} else {
 			SvGETMAGIC (value);
-			SvUPGRADE (value, SVt_PV);
+			(void)SvUPGRADE (value, SVt_PV);
 
 			notify_notification_set_hint_string (notification, key,
 			                                     (gchar *)SvPV_nolen (value));
