@@ -1,0 +1,11 @@
+MANIFEST
+MANIFEST.bak
+Makefile
+Makefile.old
+blib
+build
+Gtk2-Notify-*
+*.bs
+pm_to_blib
+*.c
+*.o
