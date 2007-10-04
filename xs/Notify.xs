@@ -45,19 +45,23 @@ C<Gtk2::Notify-E<gt>init($app_name)>.
 gboolean
 notify_init (class, app_name)
 		const char *app_name
-	C_ARGS: app_name
+	C_ARGS:
+		app_name
 
 void
 notify_uninit (class)
-	C_ARGS: /* void */
+	C_ARGS:
+		/* void */
 
 gboolean
 notify_is_initted (class)
-	C_ARGS: /* void */
+	C_ARGS:
+		/* void */
 
 const gchar *
 notify_get_app_name (class)
-	C_ARGS: /* void */
+	C_ARGS:
+		/* void */
 
 void
 notify_get_server_caps (class)
@@ -100,7 +104,8 @@ notify_notification_new (class, summary, body=NULL, icon=NULL, attach=NULL)
 		const gchar *body
 		const gchar *icon
 		GtkWidget_ornull *attach
-	C_ARGS: summary, body, icon, attach
+	C_ARGS:
+		summary, body, icon, attach
 
 #if GTK_CHECK_VERSION (2, 9, 2)
 
@@ -110,7 +115,8 @@ notify_notification_new_with_status_icon (class, summary, body=NULL, icon=NULL, 
 		const gchar *body
 		const gchar *icon
 		GtkStatusIcon *status_icon
-	C_ARGS: summary, body, icon, status_icon
+	C_ARGS:
+		summary, body, icon, status_icon
 
 #endif
 
@@ -147,7 +153,8 @@ notify_notification_show (notification)
 		NotifyNotification *notification
 	PREINIT:
 		GError *error = NULL;
-	C_ARGS: notification, &error
+	C_ARGS:
+		notification, &error
 	POSTCALL:
 		if (!RETVAL) {
 			gperl_croak_gerror (NULL, error);
@@ -255,7 +262,8 @@ notify_notification_close (notification)
 		NotifyNotification *notification
 	PREINIT:
 		GError *error = NULL;
-	C_ARGS: notification, &error
+	C_ARGS:
+		notification, &error
 	POSTCALL:
 		if (!RETVAL) {
 			gperl_croak_gerror (NULL, error);
