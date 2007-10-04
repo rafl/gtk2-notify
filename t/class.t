@@ -17,7 +17,11 @@ is( Gtk2::Notify->get_app_name, $app_name, 'set/get app_name' );
 
 lives_ok(sub { Gtk2::Notify->uninit; }, 'uninit');
 
-lives_ok(sub { Gtk2::Notify->get_server_caps; }, 'get_server_caps');
+SKIP: {
+    skip 'various reasons', 2;
 
-my @server_info = Gtk2::Notify->get_server_info;
-is( scalar @server_info, 4, 'get_server_info' );
+    lives_ok(sub { Gtk2::Notify->get_server_caps; }, 'get_server_caps');
+
+    my @server_info = Gtk2::Notify->get_server_info;
+    is( scalar @server_info, 4, 'get_server_info' );
+}
