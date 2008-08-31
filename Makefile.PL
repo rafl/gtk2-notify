@@ -48,18 +48,10 @@ WriteMakefile(
 package MY;
 
 sub postamble {
-    return 'POD_SET=$$Glib::GenPod::COPYRIGHT="Copyright (C) 2006-2007 Florian Ragwitz<br><br>'
-        . 'This library is free software; you can redistribute it and/or modify it under '
-        . 'the terms of the GNU Library General Public License as published by the Free '
-        . 'Software Foundation; either version 2 of the License, or (at your option) any '
-        . 'later version.<br><br>'
-        . 'This library is distributed in the hope that it will be useful, but WITHOUT ANY '
-        . 'WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A '
-        . 'PARTICULAR PURPOSE.  See the GNU Library General Public License for more details.'
-        . '<br><br>'
-        . 'You should have received a copy of the GNU Library General Public License along '
-        . 'with this library; if not, write to the Free Software Foundation, Inc., 59 '
-        . 'Temple Place - Suite 330, Boston, MA  02111-1307  USA.";'
-        . Glib::MakeHelper->postamble_clean()
-        . Glib::MakeHelper->postamble_docs_full(DEPENDS => $main::notify);
+    return Glib::MakeHelper->postamble_clean()
+         . Glib::MakeHelper->postamble_docs_full(
+             DEPENDS   => $main::notify,
+             XS_FILES  => \@main::xs_files,
+             COPYRIGHT => 'Copyright (C) 2006-2008 by Florian Ragwitz',
+         );
 }
