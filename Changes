@@ -1,5 +1,8 @@
 Revision history for Gtk2-Notify
 
+0.05    Wed, 12 Nov 2008 07:47:10 +0100
+        * Port build system to Module::Install.
+
 0.04    Thu, 04 Oct 2007 14:26:02 +0200
         * Let set_hint() stringify it's argument when it doesn't know
           what to do with it.

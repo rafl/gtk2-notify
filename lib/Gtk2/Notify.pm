@@ -6,7 +6,7 @@ use Gtk2;
 require DynaLoader;
 
 our @ISA = qw( DynaLoader );
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 sub import {
     my $class = shift;
