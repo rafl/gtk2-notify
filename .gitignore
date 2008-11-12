@@ -10,3 +10,4 @@ Gtk2-Notify-*
 pm_to_blib
 *.c
 *.o
+inc
