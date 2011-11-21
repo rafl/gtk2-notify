@@ -22,7 +22,6 @@ PROTOTYPES: DISABLE
             $summary,
             $message,
             $icon,
-            $attach_widget
     );
     $notification->show;
 
@@ -86,26 +85,12 @@ notify_get_server_info (class, OUTLIST char *name, OUTLIST char *vendor, OUTLIST
 MODULE = Gtk2::Notify	PACKAGE = Gtk2::Notify	PREFIX = notify_notification_
 
 NotifyNotification *
-notify_notification_new (class, summary, body=NULL, icon=NULL, attach=NULL)
+notify_notification_new (class, summary, body=NULL, icon=NULL)
 		const gchar *summary
 		const gchar *body
 		const gchar *icon
-		GtkWidget_ornull *attach
 	C_ARGS:
-		summary, body, icon, attach
-
-#if GTK_CHECK_VERSION (2, 9, 2)
-
-NotifyNotification *
-notify_notification_new_with_status_icon (class, summary, body=NULL, icon=NULL, status_icon=NULL)
-		const gchar *summary
-		const gchar *body
-		const gchar *icon
-		GtkStatusIcon *status_icon
-	C_ARGS:
-		summary, body, icon, status_icon
-
-#endif
+		summary, body, icon
 
 gboolean
 notify_notification_update (notification, summary, message=NULL, icon=NULL)
@@ -113,27 +98,6 @@ notify_notification_update (notification, summary, message=NULL, icon=NULL)
 		const gchar *summary
 		const gchar *message
 		const gchar *icon
-
-void
-notify_notification_attach_to_widget (notification, attach)
-		NotifyNotification *notification
-		GtkWidget *attach
-
-#if GTK_CHECK_VERSION (2, 9, 2)
-
-void
-notify_notification_attach_to_status_icon (notification, status_icon)
-		NotifyNotification *notification
-		GtkStatusIcon *status_icon
-
-#endif
-
-void
-notify_notification_set_geometry_hints (notification, screen, x, y)
-		NotifyNotification *notification
-		GdkScreen *screen
-		gint x
-		gint y
 
 NO_OUTPUT gboolean
 notify_notification_show (notification)
