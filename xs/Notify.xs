@@ -84,6 +84,8 @@ notify_get_server_info (class, OUTLIST char *name, OUTLIST char *vendor, OUTLIST
 
 MODULE = Gtk2::Notify	PACKAGE = Gtk2::Notify	PREFIX = notify_notification_
 
+#ifdef NO_ATTACH_TO_WIDGET
+
 NotifyNotification *
 notify_notification_new (class, summary, body=NULL, icon=NULL)
 		const gchar *summary
@@ -91,6 +93,18 @@ notify_notification_new (class, summary, body=NULL, icon=NULL)
 		const gchar *icon
 	C_ARGS:
 		summary, body, icon
+
+#else
+
+NotifyNotification *
+notify_notification_new (class, summary, body=NULL, icon=NULL)
+		const gchar *summary
+		const gchar *body
+		const gchar *icon
+	C_ARGS:
+		summary, body, icon, NULL
+
+#endif
 
 gboolean
 notify_notification_update (notification, summary, message=NULL, icon=NULL)
