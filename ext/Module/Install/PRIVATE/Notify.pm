@@ -36,7 +36,11 @@ sub notify {
 
     $notify->add_xs( @xs_files );
     $notify->add_typemaps(rel2abs(catfile(qw( build notify.typemap ))));
-    $notify->set_inc( $pkg_config{cflags}.' -Ibuild -Wall' );
+    my $attach = '';
+    if (ExtUtils::PkgConfig->atleast_version('libnotify', '0.7')) {
+        $attach = " -DNO_ATTACH_TO_WIDGET"
+    }
+    $notify->set_inc( "$pkg_config{cflags} $attach -Ibuild -Wall" );
     $notify->set_libs( $pkg_config{libs} );
     $notify->install(catfile(qw( build notify-autogen.h )));
     $notify->save_config(catfile(qw( build IFiles.pm )));

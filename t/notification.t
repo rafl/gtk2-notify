@@ -2,20 +2,18 @@
 
 use strict;
 use warnings;
-use Gtk2::TestHelper tests => 35;
+use Gtk2::TestHelper tests => 32;
 use Test::Exception;
 use Gtk2::Notify -init, $0;
 
 ginterfaces_ok('Gtk2::Notify');
 
-my $w = Gtk2::Window->new;
-my $n = Gtk2::Notify->new('foo', 'bar', '', $w);
+my $n = Gtk2::Notify->new('foo', 'bar', '');
 
 isa_ok($n, 'Gtk2::Notify');
 
 my @methods = qw(
         add_action
-        attach_to_widget
         clear_actions
         clear_hints
         close
@@ -45,16 +43,6 @@ lives_ok(sub {
             1;
         }, 42);
 }, 'add_action');
-
-{
-    my $nw = Gtk2::Window->new;
-    lives_ok(sub {
-            $n->attach_to_widget($nw);
-    }, 'attach_to_widget');
-    lives_ok(sub {
-            $n->attach_to_widget($w);
-    }, 'attach_to_widget');
-}
 
 lives_ok(sub {
         $n->clear_actions;
@@ -98,8 +86,6 @@ lives_ok(sub {
 lives_ok(sub {
         $n->close;
 }, 'close before show');
-
-$w->show_all;
 
 lives_ok(sub {
         $n->show;
